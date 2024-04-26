@@ -19,11 +19,11 @@
 
 import { Link } from "react-router-dom";
 
-export const MovieList = ({ movies }) => {
+export function MovieList({ movies }) {
   return (
     <div>
       <p>Movies list</p>
-      {/* {movies.map((movie) => (
+      {movies.map((movie) => (
         <div key={movie.id}>
           <Link to={`/movies/${movie.id}`}>
             <img
@@ -33,7 +33,7 @@ export const MovieList = ({ movies }) => {
             <h3>{movie.title}</h3>
           </Link>
         </div>
-      ))} */}
+      ))}
     </div>
   );
-};
+}

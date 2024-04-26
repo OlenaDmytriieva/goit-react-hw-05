@@ -29,3 +29,14 @@ export const getTopMovies = async () => {
   const { movies } = await axios.get(url, options);
   return movies;
 };
+
+const apiGet = async (path) => {
+  return await axios.get(
+    "https://api.themoviedb.org/3/trending/movie/" + path,
+    options
+  );
+};
+
+export const getTopMovies2 = async () => {
+  return apiGet("day?include_adult=false&language=en-US&page=1");
+};
