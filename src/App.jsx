@@ -10,9 +10,11 @@ import { Navigation } from "./components/Navigation/Navigation";
 const Home = lazy(() => import("./pages/Home"));
 const MoviesPage = lazy(() => import("./pages/MoviesPage"));
 const MovieDetailes = lazy(() => import("./pages/MovieDetailes"));
-// const MovieCast = lazy(() => import("./components/MovieCast"));
-// const MovieList = lazy(() => import("./components/MovieList"));
-// const MovieReview = lazy(() => import("./components/MovieReviews"));
+const MovieCast = lazy(() => import("./components/MovieCast/MovieCast"));
+// const MovieList = lazy(() => import("./components/MovieList/MovieList"));
+const MovieReviews = lazy(() =>
+  import("./components/MovieReviews/MovieReviews")
+);
 
 export default function App() {
   return (
@@ -23,7 +25,10 @@ export default function App() {
           <Suspense fallback={<div>Loading page...</div>}>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/movies/:movieId" element={<MovieDetailes />} />
+              <Route path="/movies/:movieId" element={<MovieDetailes />}>
+                <Route path="cast" element={<MovieCast />} />
+                <Route path="reviews" element={<MovieReviews />} />
+              </Route>
               <Route path="/movies" element={<MoviesPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>

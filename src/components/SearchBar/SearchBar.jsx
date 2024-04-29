@@ -28,6 +28,7 @@ export const SearchBar = ({ onSubmit }) => {
       setText("");
     }
   }
+  console.log(text);
 
   return (
     <>
@@ -43,7 +44,7 @@ export const SearchBar = ({ onSubmit }) => {
           className={style.input}
           value={text}
           onChange={changeText}
-          placeholder="Search images and photos"
+          placeholder="Search movie"
           name="search"
           autoFocus
         />

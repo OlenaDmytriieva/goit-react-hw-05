@@ -1,30 +1,36 @@
 import { useEffect, useState } from "react";
-// import { getTopMovies } from "../apiService/movies";
+import { searchMovie } from "../apiServise/movies";
+import { SearchBar } from "../components/SearchBar/SearchBar";
 import { MovieList } from "../components/MovieList/MovieList";
+import { useSearchParams } from "react-router-dom";
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const movieName = searchParams.get("name") ?? "";
 
-  // useEffect(() => {
-  //   const fetchTopMovies = async () => {
-  //     try {
-  //       const topMovies = await getTopMovies();
-  //       setMovies(topMovies);
-  //     } catch (error) {
-  //       console.error("Error fetching top movies:", error);
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const response = await searchMovie(movieName);
+        setMovies(response.data.results);
+      } catch (error) {
+        console.error("Error fetching movies:", error);
+      }
+    };
 
-  //   fetchTopMovies();
-  // }, []);
+    fetchMovies();
+  }, [movieName]);
 
-  console.log(movies);
+  const updateQueryString = (name) => {
+    const nextParams = name !== "" ? { name } : {};
+    setSearchParams(nextParams);
+  };
 
   return (
     <main>
-      <p>movies page</p>
-      <h1>Trending today</h1>
-      {/* <MovieList movies={movies} /> */}
+      <SearchBar value={movieName} onSubmit={updateQueryString} />
+      <MovieList movies={movies} />
     </main>
   );
 }

@@ -31,12 +31,27 @@ export const getTopMovies = async () => {
 };
 
 const apiGet = async (path) => {
-  return await axios.get(
-    "https://api.themoviedb.org/3/trending/movie/" + path,
-    options
-  );
+  return await axios.get("https://api.themoviedb.org/3/" + path, options);
 };
 
 export const getTopMovies2 = async () => {
-  return apiGet("day?include_adult=false&language=en-US&page=1");
+  return apiGet("trending/movie/day?include_adult=false&language=en-US&page=1");
+};
+
+export const searchMovie = async (query) => {
+  return apiGet(
+    `search/movie?include_adult=false&language=en-US&page=1&query=${query}`
+  );
+};
+
+export const getMovieDetailes = async (id) => {
+  return apiGet(`movie/${id}?language=en-US`);
+};
+
+export const getMovieCast = async (id) => {
+  return apiGet(`movie/${id}/credits?language=en-US`);
+};
+
+export const getMovieReviews = async (id) => {
+  return apiGet(`movie/${id}/reviews?language=en-US&page=1`);
 };

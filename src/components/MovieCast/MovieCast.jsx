@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
-import { getMovieCast } from "../../api/movies";
+import { useParams, useLocation } from "react-router-dom";
+import { getMovieCast } from "../../apiServise/movies";
 
-export const MovieCast = ({ movieId }) => {
+export default function MovieCast() {
   const [cast, setCast] = useState([]);
+  const { movieId } = useParams();
+  const location = useLocation();
 
   useEffect(() => {
     const fetchMovieCast = async () => {
       try {
-        const castData = await getMovieCast(movieId);
-        setCast(castData);
+        const response = await getMovieCast(movieId);
+        console.log(response);
+        setCast(response.data.cast);
       } catch (error) {
         console.error("Error fetching movie cast:", error);
       }
@@ -16,6 +20,8 @@ export const MovieCast = ({ movieId }) => {
 
     fetchMovieCast();
   }, [movieId]);
+
+  console.log("cast location: ", location);
 
   return (
     <div>
@@ -27,4 +33,4 @@ export const MovieCast = ({ movieId }) => {
       </ul>
     </div>
   );
-};
+}
