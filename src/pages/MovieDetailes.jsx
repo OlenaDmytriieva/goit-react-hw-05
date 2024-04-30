@@ -25,8 +25,6 @@ export default function MovieDetailsPage() {
     fetchMovieDetails();
   }, [movieId]);
 
-  console.log("location: ", location);
-
   if (!movie) {
     return <div>Loading...</div>;
   }

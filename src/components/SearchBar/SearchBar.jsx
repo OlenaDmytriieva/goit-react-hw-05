@@ -34,10 +34,6 @@ export const SearchBar = ({ onSubmit }) => {
     <>
       <Toaster />
       <form className={style.form} onSubmit={handleSubmit}>
-        <button className={style.button} type="submit">
-          <FiSearch size="16px" />
-        </button>
-
         <input
           type="text"
           autoComplete="off"
@@ -48,6 +44,9 @@ export const SearchBar = ({ onSubmit }) => {
           name="search"
           autoFocus
         />
+        <button className={style.button} type="submit">
+          <FiSearch size="20px" />
+        </button>
       </form>
     </>
   );

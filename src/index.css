@@ -27,7 +27,7 @@ body {
   /* justify-content: center; */
   min-width: 320px;
   min-height: 100vh;
-  background: #ebebeb;
+  background: #fdfdfd;
   min-height: 100vh;
   font-style: normal;
 }
@@ -40,6 +40,7 @@ h5,
 h6,
 p {
   margin: 0;
+  padding: 0 28px;
 }
 
 ul,

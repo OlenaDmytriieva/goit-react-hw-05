@@ -1,0 +1,19 @@
+.movieList {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.movieItem {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 120vh;
+}
+
+.movieItem:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
