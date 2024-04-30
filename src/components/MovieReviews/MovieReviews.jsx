@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getMovieReviews } from "../../apiServise/movies";
+import style from "./Moviereviews.module.css";
 
 export const MovieReviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -21,18 +22,18 @@ export const MovieReviews = () => {
 
   return (
     <div>
-      <h2>Reviews</h2>
+      {/* <h2>Reviews</h2> */}
       {reviews.length > 0 ? (
         <ul>
           {reviews.map((review) => (
             <li key={review.id}>
-              <p>{review.author}</p>
+              <p className={style.author}>Author: {review.author}</p>
               <p>{review.content}</p>
             </li>
           ))}
         </ul>
       ) : (
-        <p>We have no reviews about this movie.</p>
+        <p className={style.noReviews}>We have no reviews about this movie.</p>
       )}
     </div>
   );

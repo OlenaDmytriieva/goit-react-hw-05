@@ -1,0 +1,37 @@
+.movieOverview {
+  display: flex;
+  padding: 0 28px 28px 28px;
+  border-bottom: 3px inset rgb(202, 198, 198);
+}
+
+.movieInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.genresList {
+  display: flex;
+  padding: 0 28px;
+  gap: 14px;
+}
+
+h2 {
+  font-weight: 500;
+}
+
+h3 {
+  font-weight: 500;
+  padding-top: 28px;
+}
+
+.addInfoList {
+  padding: 28px;
+  border-bottom: 3px inset rgb(202, 198, 198);
+}
+
+.addInfo:hover,
+.addInfo:focus {
+  text-decoration: underline;
+  color: rgb(16, 153, 239);
+}
